@@ -1,0 +1,11 @@
+**/not_versioned/*
+**/*.log
+**/*.synctex*
+**/*.aux
+**/*.fdb_*
+**/*.out
+**/*.fls
+**/*.blg
+**/*.bbl
+**/*.bcf
+**/*.run*
