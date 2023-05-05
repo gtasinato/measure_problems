@@ -4,7 +4,7 @@
 \input{./utils/settings}
 \usepackage{biblatex}
 %\bibliographystyle{plain} % we choose the "plain" reference style
-\bibliography{biblio} % Entries are in the refs.bib file
+\bibliography{ref} % Entries are in the refs.bib file
 
 
 
@@ -344,8 +344,22 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
     \phi(x_1,x_2,x_3, t) = x_1( t, t^2, t^3 )x_2(t,t^2,t^3)x_3(t,t^2,t^3)
   \]
 
-  gives a parametrization of the intersections of points of $E$ with the moment curve in a small neighborhood of $\bar{x}$ by the implicit function theorem. Denote by $z_i$ the local function 
+  gives a parametrization of the intersections of (the zero sets of) points of $E$ with the moment curve in a small neighborhood of $\bar{x}$ by the implicit function theorem. Denote by $z_i$ the implicit functions defined by $\phi$ in a neighborhood of $(\bar x, \frac{i}{4})$ for $|i|\leq 3$ integer.
 
+  By definition of the target measure, we have that (in a small neighborhood of $\bar x$) $g$ can be expressed as:
+  \begin{align*}
+    g_{(0,0,0)}(x) &= 1 - t_3(x)\\
+    g_{(0,0,1)}(x) &= t_1(x) - t_0(x)\\
+    g_{(0,1,0)}(x) &= t_2(x) - t_3(x)\\
+    g_{(0,1,1)}(x) &= t_1(x) - t_2(x)\\
+    g_{(1,0,0)}(x) &= t_{-1}(x) - t_{-2}(x)\\
+    g_{(1,0,1)}(x) &= t_0(x) - t_{-1}(x)\\
+    g_{(1,1,0)}(x) &= t_{-2}(x) - t_{-3}(x)\\
+    g_{(1,1,1)}(x) &= t_{-3}(x) + 1\\
+  \end{align*}
+
+
+  Since $(\partial_t \phi)(\bar x, t_i) \neq 0$ for all $i$, we can explicitly write the differential of $g$ around $\bar x$ using the partial derivatives of the functions $t_i$.
   
   The differential $Dg_x$ is the matrix $8\times 12$ matrix\footnote{The entries will be indexed by $G$ on the rows.}: 
   \[
@@ -357,10 +371,19 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
       }
     \]
 
-    
+    Thus, if we denote by $v_i = (\partial_t \phi)(\bar x, t_i(\bar x))^{-1}$, the matrix $M = (Dg_{\bar x})^t$ be explicitly written as 
+    \[
+    M = \matrice{
+      v_{3}(\partial_0 \phi)(\bar x, -\frac{3}{4}) & -v_1(\partial_0 \phi)(\bar x, -\frac{3}{4}) & \partial_0 g_{(0,1,0)} & \dots & \partial_0 g_{(1,1,0)} &\partial_0 g_{(1,1,1)} \\
+      & & & \ddots&&\\
+      
+      \partial_{11} g_{(0,0,0)} & \partial_{11} g_{(0,0,1)} & \partial_{11} g_{(0,1,0)} & \dots &  \partial_{11} g_{(1,1,0)} & \partial_{11} g_{(1,1,1)} \\
+      }
+    \]
+
+    \cite{guth_polynomial_2015}    
 \end{proof}
-\cite{guth}
-test double test
+\printbibliography
 \end{document}
 % LocalWords:  equicontinuity equivariant simplicial homotopy orthant
 % LocalWords:  homotopic equipartitions simplices triangulations Guth
