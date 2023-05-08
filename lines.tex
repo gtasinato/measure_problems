@@ -4,7 +4,7 @@
 \input{./utils/settings}
 \usepackage{biblatex}
 %\bibliographystyle{plain} % we choose the "plain" reference style
-\bibliography{ref} % Entries are in the refs.bib file
+\addbibresource{ref.bib} % Entries are in the refs.bib file
 
 
 
@@ -22,7 +22,7 @@
     d(x,y) = \max_{i\in I}\vert x_i - y_i\vert
   \]
   i.e. the distance between two polynomials is the biggest difference in their coefficients (it is always finite since the set of possible multi-indices is finite).
-  
+
     \item Given $x\in X$, $Z(x) := \{p\in \bbR^3 \vert x(p) = 0\}$ is the plane configuration induced by $x$
     \item Given $x\in X$ and $\omega \in G$, the orthant $\ccO(x, \omega)$ is the (potentially empty) open set in $\bbR^3 \setminus Z(x)$ defined as:
     \[
@@ -84,12 +84,12 @@ Recall that the Guth function of parameter $\delta>0$ is defined as $I_\delta: X
     \left(I_\delta(x)\right)_\omega = \sum_{\gamma \in \Gamma} \eta_\epsilon\left(\int_{N_\delta\gamma \cap \ccO(x, \omega) \cap B_R} \eta_\epsilon(\vert x(p) \vert) \delta^{-3} d p \right)
 \]
 
-Where $\epsilon := \epsilon(\delta)$ and $R := R(\delta)$ are suitable functions (see \cite{GUTH2015}) 
-Since the Guth functions point-wise converge to the counting function for intersections, if we show that, for all sufficiently small $\delta>0$,  $T\circ I_\delta$  has a zero we obtain that $\exists x \in X$ for which the counting function is multiple (up to integer rounding) of $\mathbbm{1}$; by intersection counting the correct multiple is $\frac{n}{2}$. 
+Where $\epsilon := \epsilon(\delta)$ and $R := R(\delta)$ are suitable functions (see \cite{guth_polynomial_2015}).
+Since the Guth functions point-wise converge to the counting function for intersections, if we show that, for all sufficiently small $\delta>0$,  $T\circ I_\delta$  has a zero we obtain that $\exists x \in X$ for which the counting function is multiple (up to integer rounding) of $\mathbbm{1}$; by intersection counting the correct multiple is $\frac{n}{2}$.
 
 \vskip .5em
 The first part of the proof will be dedicated to show that for a small enough $\delta$ the Guth function $I_\delta$ is $G_\pm$-homotopic to the induced function $f$ for a measure, hence $TI_\delta$ and $Tf$ are $G_\pm$-homotopic.
-What is more, we will show that this holds on a manifold with boundary $E\subseteq X\setminus A$ of dimension $7$; since $E$ avoids $A$, the action of $G_\pm$ is free on $E$. 
+What is more, we will show that this holds on a manifold with boundary $E\subseteq X\setminus A$ of dimension $7$; since $E$ avoids $A$, the action of $G_\pm$ is free on $E$.
 
 The zero set of the homotopy is going to be a free $G_\pm$-manifold of dimension $1$ with (non-empty) boundary in $E\times I$ and we will show that it has to avoid $\partial E\times I$. By choosing a clever measure we get that there has to be exactly one orbit of zeros on the final level of the homotopy. By the fact that $G_\pm$-homotopies can change the number of zeros only by multiples of $|G_\pm|$, the function $TI_\delta$ has to have at least one zero on $E$ as desired.
 
@@ -105,7 +105,7 @@ The goal of this section is to find the suitable $\delta >0$ as previously menti
 \end{definition}
 
 The first useful remark is that $\forall x\in X$  there is $\delta_x>0$ admissible. In fact, fix $x\in X$, then there is $\gamma \in \Gamma$ such that $\gamma$
-is not contained in $Z(x)$ thus it is possible to pick $p\in \gamma\setminus Z(x)$. 
+is not contained in $Z(x)$ thus it is possible to pick $p\in \gamma\setminus Z(x)$.
 Since $R\rightarrow \infty$, $\epsilon\rightarrow 0$ and $\min_{q\in B_\delta(p)} \vert x(q)\vert \rightarrow \vert x(p)\vert >0$ with $\delta \rightarrow 0$
 eventually there will be a $\delta_x >0$ for which all the conditions will be satisfied simultaneously $\Rightarrow$ $\delta_x$ is acceptable.
 
@@ -113,7 +113,7 @@ eventually there will be a $\delta_x >0$ for which all the conditions will be sa
     There is $\tilde \delta >0$ such that $\tilde\delta$ is acceptable $\forall x \in X$.
 \end{lemma}
 \begin{proof}
-    $\forall \delta >0$ define $U(\delta) := \left\{ x\in X \vert \delta \mbox{ is acceptable for }x\right\}$. 
+    $\forall \delta >0$ define $U(\delta) := \left\{ x\in X \vert \delta \mbox{ is acceptable for }x\right\}$.
     Since $X = \bigcup_{\delta >0} U_\delta$ and $U_\alpha \subseteq U_\beta$ whenever $\alpha \leq \beta$, in order to obtain the thesis it is sufficient by compactness
     to show that $U_\delta$ is open $\forall \delta$.
 
@@ -140,7 +140,7 @@ From now on, fix $\delta$ to be a value $\tilde \delta \geq \delta > 0$.
 
 Since the space of bounded Borel measures on $\bbR^3$ is convex, the convex combination of any two measure gives a $G_\pm$-homotopy between the two induced functions. What is more, such an homotopy is never $0$ on the degenerate set $A$ by construction; hence, if we can construct an homotopy between the Guth function and a measure avoiding zeros on $A$ then we can do the same with any other measure.
 
-The key observation is that the Guth function is already almost an induced function of a measure, the only difference is the cut-off function wrapping the integral and the function 
+The key observation is that the Guth function is already almost an induced function of a measure, the only difference is the cut-off function wrapping the integral and the function
 under the integral sign; hence the strategy is to construct homotopy for these two functions that respect the properties we are interested in at all times.
 
 Define thus the two homotopies:
@@ -159,20 +159,20 @@ Finally, we can define the combined homotopy; that is, on the coordinate $\omega
 \]
 
 This is clearly $G_\pm$-equivariant, $H_0 \equiv I_\delta$, $H_1 \equiv \int_{N_\delta\Gamma \cap \ccO(x, \omega) \cap B_R} \delta^{-3} d p$
- (the induced function for the measure supported on $N_\delta\Gamma \cap B_R$); the only property left to check is that it is never a multiple of the $\mathbbm{1}$ vector 
+ (the induced function for the measure supported on $N_\delta\Gamma \cap B_R$); the only property left to check is that it is never a multiple of the $\mathbbm{1}$ vector
  on degenerate configurations.
 
- Fix $x \in A$. Then, there is $\omega_x \in G$ such that $\ccO(x, \omega_x)$ is empty $\Rightarrow$ $H_t(x)_{\omega_x} \equiv 0$ at every $t$. 
- 
- \vskip .5em 
+ Fix $x \in A$. Then, there is $\omega_x \in G$ such that $\ccO(x, \omega_x)$ is empty $\Rightarrow$ $H_t(x)_{\omega_x} \equiv 0$ at every $t$.
+
+ \vskip .5em
  \noindent \textbf{Claim:} There is an element $\xi$ and $\uglyepsilon$ such that $H_t(x)_\xi \geq \uglyepsilon >0$ at all times.
 
  \vskip .3em
  Since the argument of $\beta_t$ is always positive, $H_t$ is a sum of positive functions hence it is enough to prove that $\exists \gamma \in \Gamma$ and $\xi \in G$
  such that
  \[
-    \beta_t \left(\int_{N_\delta\gamma \cap \ccO(x, \xi) \cap B_R} \alpha_t (\vert x(p) \vert) \delta^{-3} d p \right) \geq \uglyepsilon >0 
-\] 
+    \beta_t \left(\int_{N_\delta\gamma \cap \ccO(x, \xi) \cap B_R} \alpha_t (\vert x(p) \vert) \delta^{-3} d p \right) \geq \uglyepsilon >0
+\]
 
 Let $\tilde p\in \gamma$ ($\gamma \in \Gamma$) be a witness for the acceptability of $\delta$ and let $\xi$ be the index of the orthant containing $\tilde p$. Then, $\forall t\in [0,1]$:
 \[
@@ -195,7 +195,7 @@ Since $\beta_t(x)$ is monotone increasing in $t$ if $x\geq 1$
 \label{sec:conclusion}
 
 By compactness of $X\times I$, there is an $\epsilon > 0$ such that $\forall \alpha \in G \setminus 0$,  $\left(T\circ H_t\right|_A)_\alpha  > \epsilon$. It is thus possible to choose a small $G_\pm$-invariant tubolar neighborhood $N_A$ such that  $\left(T\circ H_t\right|_{N_A})_\alpha  > \frac{2\epsilon}{3}$. For convenience, choose $N_A$ to be closed and denote by $U_A$ its interior.
-  
+
 \vskip .5em
 Let $P := \{ x\in X \vert \mbox{ one of the planes is parallel to the plane }t_1 = 0\}$. By construction $ P = \left(S^1\times S^3\times S^3\right)\times \left(S^3\times S^1\times S^3\right)\times \left(S^3\times S^3\times S^1\right)$ and thus it is not a manifold.
 
@@ -232,7 +232,7 @@ If we choose a connected component starting from one of the point in $Z\cap E\ti
 
 Thus we can assume $\norm{p} \neq 0$ and denote by $\hat{p}:=\frac{p}{\norm{p}}$.
 
-  If $0<\norm{p} \leq 1$; for $n$ big enough we have: 
+  If $0<\norm{p} \leq 1$; for $n$ big enough we have:
   \[
     \vert x_n(p) - x_\infty(p) \vert \leq \sum_{i=0}^3 \norm{p}^i\vert x_n^i(\hat{p})-x_\infty^i(\hat{p})\vert \leq \sum_{i=0}^3c_id(x_n, x_\infty)\leq C d(x_n, x_\infty)\leq \epsilon
   \]
@@ -261,9 +261,9 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
 
   Let $q_n$ be a point that realizes $m(y_n)$ (i.e. $m(y_n) = \vert y_n(q_n)-x(q_n)\vert$), up to taking a sub-sequence we can assume $q_n$ converges to some point $q_\infty\in B_\delta(p)$.
 
-  
+
   What is more, the family $\{y_n\}$ is equicontinuous as functions $y_n:B_\delta(p) \rightarrow \bbR$ (they are differentiable and have bounded derivative) and thus they converge uniformly on $B_\delta(p)$.
-  
+
   \vskip 1em
   \textbf{CLAIM: } $q_\infty$ realizes $m(y_\infty)$.
 
@@ -280,15 +280,15 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
   The only thing left to prove is the claim.
 
   \vskip .5em
-  
-  
+
+
 \end{proof}
 \begin{lemma}[Target Measure]
   \label{measure}
   Let $\mu$ the probability measure with support on $S=\{(t, t^2, t^3)\in \bbR^3 | t\in [-1,1]\}$ and uniform density. Then there is a unique $G_\pm$-orbit of points in $P$ that equipartitions $\mu$.
 
-  Equivalently, up to order and signs there is a unique triple of planes such that every orthant has the same measure and the first one is parallel to the horizontal plane $\{p\in \bbR^3 \vert p_1 = 0\}$. 
-  
+  Equivalently, up to order and signs there is a unique triple of planes such that every orthant has the same measure and the first one is parallel to the horizontal plane $\{p\in \bbR^3 \vert p_1 = 0\}$.
+
 \end{lemma}
 
 \begin{lemma}[Generic Homotopy]
@@ -300,7 +300,7 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
   \item $f$ is $G_\pm$-homotopic to $TH$
   \item $f$ is affine on every simplex in $X\times I$
   \item $f$ is generic: i.e. $f^{-1}(0)$ intersects only simplices of dimension at least $7=\dim W$
-  \item $f(x,1) = 0$ on exactly one orbit in $E$ 
+  \item $f(x,1) = 0$ on exactly one orbit in $E$
   \end{enumerate}
 \end{lemma}
 
@@ -314,9 +314,9 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
 \end{lemma}
 
 \begin{proof}
-  
+
   [Sketch / find a less convoluted proof for last point in lemma \ref{generic}]
-  
+
   % By construction of the measure, the value of $g(x_1, x_2, x_3)_\omega$ is the sum of the length of some sub-intervals of $[-1, 1]$ with endpoints in the set
   % \[
   %   \{t_\alpha | x_1(t_\alpha,t_\alpha^2, t_\alpha^3)x_2(t_\alpha,t_\alpha^2, t_\alpha^3)x_3(t_\alpha,t_\alpha^2, t_\alpha^3)=0\}
@@ -331,7 +331,7 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
 
   \vskip .5em
 
-  By lemma \ref{measure}, $(Tg)^{-1}(0) = G_\pm \bar{x}$ where
+  By lemma \ref{measure}, $(Tg)^{-1}(0) = G_\pm \bar{x}$ where (up to normalization)
   \[
     \bar{x} = \left( (1,0,0,0), (-\frac{5}{16}, \frac{1}{2}, 1, -\frac{3}{32}), (-\frac{5}{16}, -\frac{1}{2}, 1, \frac{3}{32})\right)
   \]
@@ -339,7 +339,7 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
   Since $G_\pm$ acts on the differential as multiplication with an invertible matrix, $0$ is a regular value for $Tg$ if and only if $Dg_x$ is full rank.
 
 
-  Since $E\subseteq (\bbR^4)^3$, the $0$-set of the function $E\times \bbR \rightarrow \bbR$ defined as
+  The $0$-set of the function $E\times \bbR \rightarrow \bbR$ defined as
   \[
     \phi(x_1,x_2,x_3, t) = x_1( t, t^2, t^3 )x_2(t,t^2,t^3)x_3(t,t^2,t^3)
   \]
@@ -348,42 +348,72 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
 
   By definition of the target measure, we have that (in a small neighborhood of $\bar x$) $g$ can be expressed as:
   \begin{align*}
-    g_{(0,0,0)}(x) &= 1 - t_3(x)\\
-    g_{(0,0,1)}(x) &= t_1(x) - t_0(x)\\
-    g_{(0,1,0)}(x) &= t_2(x) - t_3(x)\\
-    g_{(0,1,1)}(x) &= t_1(x) - t_2(x)\\
-    g_{(1,0,0)}(x) &= t_{-1}(x) - t_{-2}(x)\\
-    g_{(1,0,1)}(x) &= t_0(x) - t_{-1}(x)\\
-    g_{(1,1,0)}(x) &= t_{-2}(x) - t_{-3}(x)\\
-    g_{(1,1,1)}(x) &= t_{-3}(x) + 1\\
+    g_{(0,0,0)}(x) &= 1 - z_3(x)\\
+    g_{(0,0,1)}(x) &= z_1(x) - z_0(x)\\
+    g_{(0,1,0)}(x) &= z_2(x) - z_3(x)\\
+    g_{(0,1,1)}(x) &= z_1(x) - z_2(x)\\
+    g_{(1,0,0)}(x) &= z_{-1}(x) - z_{-2}(x)\\
+    g_{(1,0,1)}(x) &= z_0(x) - z_{-1}(x)\\
+    g_{(1,1,0)}(x) &= z_{-2}(x) - z_{-3}(x)\\
+    g_{(1,1,1)}(x) &= z_{-3}(x) + 1\\
   \end{align*}
 
 
   Since $(\partial_t \phi)(\bar x, t_i) \neq 0$ for all $i$, we can explicitly write the differential of $g$ around $\bar x$ using the partial derivatives of the functions $t_i$.
-  
-  The differential $Dg_x$ is the matrix $8\times 12$ matrix\footnote{The entries will be indexed by $G$ on the rows.}: 
+
+  Fix $\psi: \left(-\pi, \pi \right)\times B_1(0) \times B_1(0)\rightarrow \left\{ x_1 > 0\right\}\times \left\{ x_4 <0\right\}\times \left\{ x_4 >0\right\}$ chart in $E$ around $\bar{x}$ with parametrization:
   \[
-    (Dg_x)^t = \matrice{
-      \partial_0 g_{(0,0,0)} & \partial_0 g_{(0,0,1)} & \partial_0 g_{(0,1,0)} & \dots & \partial_0 g_{(1,1,0)} &\partial_0 g_{(1,1,1)} \\
-      & & & \ddots&&\\
-      
-      \partial_{11} g_{(0,0,0)} & \partial_{11} g_{(0,0,1)} & \partial_{11} g_{(0,1,0)} & \dots &  \partial_{11} g_{(1,1,0)} & \partial_{11} g_{(1,1,1)} \\
-      }
-    \]
+    \left(\theta, \matrice{x_1\\ x_2 \\ x_3},\matrice{y_1\\y_2\\y_3}\right) \mapsto \left(\matrice{\cos(\theta)\\ 0\\ 0\\ \sin(\theta)}, \matrice{x_1\\ x_2 \\ x_3\\-\sqrt{1-\norm{x}^2}},\matrice{y_1\\y_2\\y_3\\\sqrt{1-\norm{y}^2}}\right)
+  \]
 
-    Thus, if we denote by $v_i = (\partial_t \phi)(\bar x, t_i(\bar x))^{-1}$, the matrix $M = (Dg_{\bar x})^t$ be explicitly written as 
-    \[
-    M = \matrice{
-      v_{3}(\partial_0 \phi)(\bar x, -\frac{3}{4}) & -v_1(\partial_0 \phi)(\bar x, -\frac{3}{4}) & \partial_0 g_{(0,1,0)} & \dots & \partial_0 g_{(1,1,0)} &\partial_0 g_{(1,1,1)} \\
-      & & & \ddots&&\\
-      
-      \partial_{11} g_{(0,0,0)} & \partial_{11} g_{(0,0,1)} & \partial_{11} g_{(0,1,0)} & \dots &  \partial_{11} g_{(1,1,0)} & \partial_{11} g_{(1,1,1)} \\
-      }
-    \]
 
-    \cite{guth_polynomial_2015}    
+  All the relevant derivatives are (in the chart around $\bar x$):
+
+  \begin{align*}
+    \partial_t\phi &=& \cos\theta\left(x_1t + x_2t^2 + x_3t^3 - \sqrt{1-\norm{x}^2}\right)\left(y_1t + y_2t^2 + y_3t^3+\sqrt{1-\norm{y}^2}\right)+\\
+                   & &+ \left(t\cos\theta +\sin\theta\right)\left( x_1+ 2x_2t + 3x_3t^2\right)\left(y_1t + y_2t^2 + y_3t^3+\sqrt{1-\norm{y}^2}\right)+\\
+                   & & +\left(t\cos\theta +\sin\theta\right)\left(x_1t + x_2t^2 + x_3t^3 - \sqrt{1-\norm{x}^2}\right)\left( y_1+ 2y_2t + 3y_3t^2\right)
+  \end{align*}
+
+  \begin{align*}
+    \partial_{x_i} \phi &= \left(t\cos\theta +\sin\theta\right)\left( t^i + \frac{x_i}{\sqrt{1-\norm{x}^2}}\right)\left(y_1t + y_2t^2 + y_3t^3+\sqrt{1-\norm{y}^2}\right)\\
+    \partial_{y_i} \phi &= \left(t\cos\theta +\sin\theta\right)\left(x_1t + x_2t^2 + x_3t^3 - \sqrt{1-\norm{x}^2}\right)\left( t^i - \frac{y_i}{\sqrt{1-\norm{y}^2}} \right)
+  \end{align*}
+
+  Thus by implicit function theorem it is sufficient to evaluate
+
+  % The differential $Dg_x$ is the matrix $8\times 12$ matrix\footnote{The entries will be indexed by $G$ on the rows.}:
+  % \[
+  %   (Dg_x)^t = \matrice{
+  %     \partial_0 g_{(0,0,0)} & \partial_0 g_{(0,0,1)} & \partial_0 g_{(0,1,0)} & \dots & \partial_0 g_{(1,1,0)} &\partial_0 g_{(1,1,1)} \\
+  %     & & & \ddots&&\\
+
+  %     \partial_{11} g_{(0,0,0)} & \partial_{11} g_{(0,0,1)} & \partial_{11} g_{(0,1,0)} & \dots &  \partial_{11} g_{(1,1,0)} & \partial_{11} g_{(1,1,1)} \\
+  %     }
+  %   \]
+
+  %   Thus, if we denote by $v_i = (\partial_t \phi)(\bar x, t_i(\bar x))^{-1}$, the matrix $M = (Dg_{\bar x})^t$ be explicitly written as
+  %   \[
+  %   M = \matrice{
+  %     v_{3}(\partial_0 \phi)(\bar x, -\frac{3}{4}) & -v_1(\partial_0 \phi)(\bar x, -\frac{3}{4}) & \partial_0 g_{(0,1,0)} & \dots & \partial_0 g_{(1,1,0)} &\partial_0 g_{(1,1,1)} \\
+  %     & & & \ddots&&\\
+  %     \partial_{11} g_{(0,0,0)} & \partial_{11} g_{(0,0,1)} & \partial_{11} g_{(0,1,0)} & \dots &  \partial_{11} g_{(1,1,0)} & \partial_{11} g_{(1,1,1)} \\
+  %     }
+  %   \]
+
+  %   Evaluating the expressions we obtain the following matrix:
+
+  %   \[
+  %     \matrice{
+
+  %       }
+  %     \[
+
+  % /
+
 \end{proof}
 \printbibliography
+
 \end{document}
 % LocalWords:  equicontinuity equivariant simplicial homotopy orthant
 % LocalWords:  homotopic equipartitions simplices triangulations Guth
