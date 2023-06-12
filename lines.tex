@@ -317,26 +317,16 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
 
   [Sketch / find a less convoluted proof for last point in lemma \ref{generic}]
 
-  % By construction of the measure, the value of $g(x_1, x_2, x_3)_\omega$ is the sum of the length of some sub-intervals of $[-1, 1]$ with endpoints in the set
-  % \[
-  %   \{t_\alpha | x_1(t_\alpha,t_\alpha^2, t_\alpha^3)x_2(t_\alpha,t_\alpha^2, t_\alpha^3)x_3(t_\alpha,t_\alpha^2, t_\alpha^3)=0\}
-  % \]
-
-  % For convenience, denote by $X(t)$ the polynomial $ x_1(t,t^2, t^3)x_2(t,t^2, t^3)x_3(t,t^2, t^3)$.
-
-  % By the implicit function theorem, if $x\in E$ these are locally smooth functions $t_\alpha$ hence the function $g$ is smooth on $E$ and the differential is (some sum) of the differentials of $t_\alpha$ that is invertible if $Tg(x)=0$\footnote{I need to write down the matrices and check that I made no sign mistakes but it should be fine. I assume there is a more straightforward proof of the fact that the induced function by $\mu$ cross the diagonal transversely but this was the only one I could come up with.}.
-
-
-  % \hrule
-
   \vskip .5em
+
+  Smoothness is clear by the definition. The hard part is proving the regualrity of the zeros.
 
   By lemma \ref{measure}, $(Tg)^{-1}(0) = G_\pm \bar{x}$ where (up to normalization)
   \[
     \bar{x} = \left( (1,0,0,0), (-\frac{5}{16}, \frac{1}{2}, 1, -\frac{3}{32}), (-\frac{5}{16}, -\frac{1}{2}, 1, \frac{3}{32})\right)
   \]
 
-  Since $G_\pm$ acts on the differential as multiplication with an invertible matrix, $0$ is a regular value for $Tg$ if and only if $Dg_x$ is full rank.
+  Since $G_\pm$ acts on the differential as multiplication with an invertible matrix, $0$ is a regular value for $Tg$ if and only if $D(Tg)_{\bar x}$ is full rank.
 
 
   The $0$-set of the function $E\times \bbR \rightarrow \bbR$ defined as
@@ -344,20 +334,19 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
     \phi(x_1,x_2,x_3, t) = x_1( t, t^2, t^3 )x_2(t,t^2,t^3)x_3(t,t^2,t^3)
   \]
 
-  gives a parametrization of the intersections of (the zero sets of) points of $E$ with the moment curve in a small neighborhood of $\bar{x}$ by the implicit function theorem. Denote by $z_i$ the implicit functions defined by $\phi$ in a neighborhood of $(\bar x, \frac{i}{4})$ for $|i|\leq 3$ integer.
+  gives a parametrization of the intersections of (the zero sets of) points of $E$ with the moment curve in a small neighborhood of $\bar{x}$ by the implicit function theorem. Denote by $z_i$ the implicit functions defined by $\phi$ in a neighborhood of $(\bar x, t_i:=\frac{i}{4})$ for $|i|\leq 3$ integer.
 
   By definition of the target measure, we have that (in a small neighborhood of $\bar x$) $g$ can be expressed as:
   \begin{align*}
     g_{(0,0,0)}(x) &= 1 - z_3(x)\\
     g_{(0,0,1)}(x) &= z_1(x) - z_0(x)\\
-    g_{(0,1,0)}(x) &= z_2(x) - z_3(x)\\
-    g_{(0,1,1)}(x) &= z_1(x) - z_2(x)\\
+    g_{(0,1,0)}(x) &= z_3(x) - z_2(x)\\
+    g_{(0,1,1)}(x) &= z_2(x) - z_1(x)\\
     g_{(1,0,0)}(x) &= z_{-1}(x) - z_{-2}(x)\\
     g_{(1,0,1)}(x) &= z_0(x) - z_{-1}(x)\\
     g_{(1,1,0)}(x) &= z_{-2}(x) - z_{-3}(x)\\
     g_{(1,1,1)}(x) &= z_{-3}(x) + 1\\
   \end{align*}
-
 
   Since $(\partial_t \phi)(\bar x, t_i) \neq 0$ for all $i$, we can explicitly write the differential of $g$ around $\bar x$ using the partial derivatives of the functions $t_i$.
 
@@ -370,47 +359,78 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
   All the relevant derivatives are (in the chart around $\bar x$):
 
   \begin{align*}
-    \partial_t\phi &=& \cos\theta\left(x_1t + x_2t^2 + x_3t^3 - \sqrt{1-\norm{x}^2}\right)\left(y_1t + y_2t^2 + y_3t^3+\sqrt{1-\norm{y}^2}\right)+\\
-                   & &+ \left(t\cos\theta +\sin\theta\right)\left( x_1+ 2x_2t + 3x_3t^2\right)\left(y_1t + y_2t^2 + y_3t^3+\sqrt{1-\norm{y}^2}\right)+\\
-                   & & +\left(t\cos\theta +\sin\theta\right)\left(x_1t + x_2t^2 + x_3t^3 - \sqrt{1-\norm{x}^2}\right)\left( y_1+ 2y_2t + 3y_3t^2\right)
+    d_0:=\partial_t\phi &=& \cos\theta\left(x_1t + x_2t^2 + x_3t^3 - \sqrt{1-\norm{x}^2}\right)\left(y_1t + y_2t^2 + y_3t^3+\sqrt{1-\norm{y}^2}\right)\\
+                   & &+ \left(t\cos\theta +\sin\theta\right)\left( x_1+ 2x_2t + 3x_3t^2\right)\left(y_1t + y_2t^2 + y_3t^3+\sqrt{1-\norm{y}^2}\right)\\
+                   & &+ \left(t\cos\theta +\sin\theta\right)\left(x_1t + x_2t^2 + x_3t^3 - \sqrt{1-\norm{x}^2}\right)\left( y_1+ 2y_2t + 3y_3t^2\right)
   \end{align*}
 
   \begin{align*}
-    \partial_{x_i} \phi &= \left(t\cos\theta +\sin\theta\right)\left( t^i + \frac{x_i}{\sqrt{1-\norm{x}^2}}\right)\left(y_1t + y_2t^2 + y_3t^3+\sqrt{1-\norm{y}^2}\right)\\
-    \partial_{y_i} \phi &= \left(t\cos\theta +\sin\theta\right)\left(x_1t + x_2t^2 + x_3t^3 - \sqrt{1-\norm{x}^2}\right)\left( t^i - \frac{y_i}{\sqrt{1-\norm{y}^2}} \right)
+    d_1:=\partial_\theta \phi &= \left(-t\sin\theta +\cos\theta\right)\left(x_1t + x_2t^2 + x_3t^3 - \sqrt{1-\norm{x}^2}\right)\left(y_1t + y_2t^2 + y_3t^3+\sqrt{1-\norm{y}^2}\right)
+  \end{align*}
+  \begin{align*}
+    d_{1+i}:=\partial_{x_i} \phi &= \left(t\cos\theta +\sin\theta\right)\left( t^i + \frac{x_i}{\sqrt{1-\norm{x}^2}}\right)\left(y_1t + y_2t^2 + y_3t^3+\sqrt{1-\norm{y}^2}\right)\\
+    d_{4+i}:=\partial_{y_i} \phi &= \left(t\cos\theta +\sin\theta\right)\left(x_1t + x_2t^2 + x_3t^3 - \sqrt{1-\norm{x}^2}\right)\left( t^i - \frac{y_i}{\sqrt{1-\norm{y}^2}} \right)
   \end{align*}
 
-  Thus by implicit function theorem it is sufficient to evaluate
+  Thus by implicit function theorem it is sufficient to evaluate the derivatives on the zero points $(z_i, t_i)$.
 
-  % The differential $Dg_x$ is the matrix $8\times 12$ matrix\footnote{The entries will be indexed by $G$ on the rows.}:
-  % \[
-  %   (Dg_x)^t = \matrice{
-  %     \partial_0 g_{(0,0,0)} & \partial_0 g_{(0,0,1)} & \partial_0 g_{(0,1,0)} & \dots & \partial_0 g_{(1,1,0)} &\partial_0 g_{(1,1,1)} \\
-  %     & & & \ddots&&\\
+  Here there is the full matrix ($M_{i,j} = d_{i-1}(t_{4+j})$) with the needed values:
 
-  %     \partial_{11} g_{(0,0,0)} & \partial_{11} g_{(0,0,1)} & \partial_{11} g_{(0,1,0)} & \dots &  \partial_{11} g_{(1,1,0)} & \partial_{11} g_{(1,1,1)} \\
-  %     }
-  %   \]
+\[
+ M= \left[
+\begin{matrix}
 
-  %   Thus, if we denote by $v_i = (\partial_t \phi)(\bar x, t_i(\bar x))^{-1}$, the matrix $M = (Dg_{\bar x})^t$ be explicitly written as
-  %   \[
-  %   M = \matrice{
-  %     v_{3}(\partial_0 \phi)(\bar x, -\frac{3}{4}) & -v_1(\partial_0 \phi)(\bar x, -\frac{3}{4}) & \partial_0 g_{(0,1,0)} & \dots & \partial_0 g_{(1,1,0)} &\partial_0 g_{(1,1,1)} \\
-  %     & & & \ddots&&\\
-  %     \partial_{11} g_{(0,0,0)} & \partial_{11} g_{(0,0,1)} & \partial_{11} g_{(0,1,0)} & \dots &  \partial_{11} g_{(1,1,0)} & \partial_{11} g_{(1,1,1)} \\
-  %     }
-  %   \]
+  - \frac{45}{463} & \frac{5}{463} & - \frac{1}{463} & - \frac{3}{463} & \frac{1}{463} & - \frac{5}{463} & \frac{45}{463}\\
+  0&0&0& 1 &0&0&0 \\
 
-  %   Evaluating the expressions we obtain the following matrix:
+\frac{248}{463} & 0 & - \frac{296}{4167} & 0 & 0 & - \frac{368}{4167} & 0\\
 
-  %   \[
-  %     \matrice{
+- \frac{458}{463} & 0 & \frac{506}{4167} & 0 & 0 & \frac{488}{4167} & 0\\
 
-  %       }
-  %     \[
+- \frac{2129}{926} & 0 & \frac{2051}{8334} & 0 & 0 & \frac{1012}{4167} & 0\\
 
-  % /
+0 & - \frac{272}{4167} & 0 & 0 & - \frac{344}{4167} & 0 & \frac{392}{463}\\
 
+0 & - \frac{536}{4167} & 0 & 0 & - \frac{518}{4167} & 0 & \frac{566}{463}\\
+
+0 & \frac{1036}{4167} & 0 & 0 & \frac{2045}{8334} & 0 & - \frac{1967}{926}
+\end{matrix}
+\right]
+\]
+
+
+A direct computation shows that the Jacobian matrix is:
+\[
+  D(Tg)_{\bar x} =
+\left[
+  \begin{matrix}
+    0 & \frac{544}{9} & - \frac{1000}{9} & - \frac{2072}{9} & 0 & 0 & 0\\
+    0 & - \frac{640}{9} & \frac{1024}{9} & \frac{2030}{9} & - \frac{640}{9} & - \frac{1024}{9} & \frac{2066}{9}\\
+    0 & 0 & 0 & 0 & - \frac{736}{9} & - \frac{1048}{9} & \frac{2024}{9}\\
+    2 & \frac{1232}{45} & - \frac{1892}{45} & - \frac{4153}{45} & \frac{688}{9} & \frac{1036}{9} & - \frac{2045}{9}\\
+    2 & - \frac{592}{9} & \frac{1012}{9} & \frac{2051}{9} & \frac{688}{9} & \frac{1036}{9} & - \frac{2045}{9}\\
+    -2 & \frac{592}{9} & - \frac{1012}{9} & - \frac{2051}{9} & \frac{1328}{45} & \frac{2204}{45} & - \frac{4039}{45}\\
+    -2 & \frac{1232}{45} & - \frac{1892}{45} & - \frac{4153}{45} & - \frac{1328}{45} & - \frac{2204}{45} & \frac{4039}{45}
+      \end{matrix}
+    \right]
+  \]
+
+  that is invertible, with inverse (reported  just as a sanity check):
+  \[
+    \left[
+      \begin{matrix}
+        0 & 0 & 0 & \frac{1}{4} & - \frac{1}{4} & - \frac{1}{4} & - \frac{1}{4}\\
+        - \frac{4465}{29248} & - \frac{3}{7312} & - \frac{3}{7312} & \frac{3197}{29248} & - \frac{3221}{29248} & - \frac{3}{7312} & - \frac{3}{7312}\\
+        - \frac{499}{7312} & \frac{46}{457} & \frac{46}{457} & \frac{1189}{7312} & \frac{283}{7312} & \frac{46}{457} & \frac{46}{457}\\
+        - \frac{21}{1828} & - \frac{89}{1828} & - \frac{89}{1828} & - \frac{91}{1828} & - \frac{87}{1828} & - \frac{89}{1828} & - \frac{89}{1828}\\
+        \frac{3}{7408} & - \frac{3}{7408} & - \frac{4495}{29632} & - \frac{3}{7408} & - \frac{3179}{29632} & - \frac{3203}{29632} & \frac{3}{7408}\\
+        - \frac{46}{463} & \frac{46}{463} & \frac{517}{7408} & \frac{46}{463} & - \frac{253}{7408} & \frac{1219}{7408} & - \frac{46}{463}\\
+        - \frac{95}{1852} & \frac{95}{1852} & - \frac{27}{1852} & \frac{95}{1852} & - \frac{105}{1852} & \frac{85}{1852} & - \frac{95}{1852}
+      \end{matrix}
+    \right]
+  \]
+
+Hence $0$ is a regular value for $Tg$ as desired.
 \end{proof}
 \printbibliography
 
