@@ -1,0 +1,191 @@
+\documentclass[10pt]{article}
+
+\input{./utils/packages}
+\input{./utils/settings}
+
+\title{Splitting a measure along a fixed direction}
+\addbibresource{./ref.bib}
+\author{}
+
+\begin{document}
+\maketitle
+\section*{Notation}
+\begin{itemize}
+	\item A measure $\mu$ on $\bbR^d$ is nice if it is Borel, $\mu(\bbR^d)=1$, $\mu(H) = 0$ for all affine hyperplanes and it has connected support.
+	\item Given an arrangement $\ccH$ of $k$ oriented affine hyperplanes and a sign pattern $\alpha\in (\ztwo)^k$, the orthant $\ccO(\ccH, \alpha)$ is defined as
+	\[
+		\ccO(\ccH, \alpha) := \{x\in \bbR^d \vert (-1)^{\alpha_i}(\scalar{h_i}{x} - a_i) > 0 \}
+	\]
+	Intuitively, $\ccO(\ccH, \alpha)$ is the set of point lying on the side of $H_i$ determined by $\alpha_i$ (positive if $\alpha_i=0$, negative otherwise).
+	\item $G= \bbZ_4\times \ztwo$ with generators $g_1 = (1,0)$ and $g_2=(0, 1)$.
+	\item If $v\in \bbR^d$ is a non-zero vector, $\overline{v}$ is its normalization $\overline{v}=\frac{v}{\norm{v}}$.
+	\item An oriented affine hyperplane $H = \{x\in \bbR^d \vert \scalar{h}{x} - a =0 \}$ defines a point $\frac{(h, a)}{\norm{(h,a)}}$ in $S^d$ and vice versa.
+	\item Given a nice measure $\mu$ in $\bbR^3$, define the standard test map $F:\left(S^3 \right)^3 \times \ztwo^3  \rightarrow \bbR$:
+	\[
+		F(x, \omega) = \mu(\ccO(x, \omega))  - \frac{1}{8}
+	\]
+	$x$ is an equipartition $\iff$ $F(x, \alpha) = 0$ $\forall \alpha$.
+	\item Given a test map $F$, the alternating sum functions are the discrete Fourier transform of the test map. More precisely, if $\alpha \in \left( \ztwo\right)^3$
+	$\alpha \neq 0$, then the alternating sum with parameter $\alpha$ is:
+	\[
+		F_\alpha(x) = \sum_{\omega\in \ztwo^3} (-1)^{\scalar{\alpha}{\omega}} F(x, \omega)
+	\]
+
+	$x$ is an equipartition $\iff$ $F_\alpha(x) = 0$ $\forall \alpha \neq 0$
+	\item The group $\ztwo^3$ acts on $\left(S^3 \right)^3$ by coordinate-wise antipodality and, given $\alpha, g \in \ztwo^3$ with $\alpha\neq 0$ and a test map $F$:
+	\[
+		F_\alpha(g\cdot x) = (-1)^{\scalar{\alpha}{g}}F_\alpha(x)
+	\]
+\end{itemize}
+
+\section*{The Result}
+Our goal is to prove the following result:
+\begin{theorem}
+	Given a nice measure $\mu$ and a direction $p\in S^2$ it is possible to find $3$ affine oriented planes that equipartition the measure and the
+	first two have the prescribed oriented intersection $p$. Formally, $\exists \ccH=((h_1, a_1), (h_2, a_2), (h_3, a_3))$ configuration of oriented planes such that:
+	\begin{itemize}
+		\item $\forall \alpha\in (\ztwo)^k$, $\ \mu(\ccO(\ccH, \alpha))= \frac{1}{8}$.
+		\item $\overline{h}_1\wedge \overline{h}_2 = p$.
+	\end{itemize}
+\end{theorem}
+
+\begin{proof}
+	Without loss of generality, let $z = (0,0,1)$. The proof will be split in two sections: the first deals with constructing a map
+	$\Phi: S^1\times S^3 \rightarrow \bbR^4$ in $\bbR^4$ whose zeros codify equipartitions of the mass. The second step will be to show that the map will
+	respect a suitable action of $G$ on the two space and that such equivariance forces the existence of a zero.
+
+	\vskip .5em
+	\textbf{Step 1}
+	\vskip .5em
+	The key step in constructing the map is to show that we can parametrize pair of planes that have intersection direction
+	$z$ and split the mass in 4 equal parts
+	with vector in $S^1$.
+
+	Project the mass on the $xy$ plane to obtain a nice measure $\mu^\#$ on $\bbR^2$. The following bisecting lemma applies:
+
+	\begin{lemma}[Bisecting]
+		Let $\mu^\#$ be a nice measure on $\bbR^2$ and $v\in S^1$ a direction. Then there exists two oriented affine lines $l_0 =\bbR\vec{l_0} + a_0$ and $l_1 = \bbR\vec{l_1} + a_1$ in $\bbR^2$ such that:
+		\begin{itemize}
+			\item $l_0$ and $l_1$ equipartition $\mu^\#$
+			\item $v$ bisects the angle between $l_0$ and $l_1$
+		\end{itemize}
+
+		What is more, we can choose consistently the direction $\vec{l_0}$ (e.g. fix $\vec{l_0}$ to be the first direction clockwise, while the first one contraclockwise is $\vec{l_1}$).
+		Once this choice is made, $\vec{l_0}$ and $\vec{l_1}$ are unique and depend continuously on $v$.
+	\end{lemma}
+
+	The lemma guarantees that, once we fix a direction $v\in S^1\subseteq S^2$ (inclusion as the horizontal equator in $S^2$)
+	there are two affine lines in the $xy$ plane $l_0 = \bbR\vec{l_0}(v) + a_0(v))$ and $l_1 = \bbR\vec{l_1}(v) + a_1(v))$ that bisect the projected measure $\mu^\#$.
+
+	Define $H_i(v) = (h_i(v), a_i(v))$ to be the affine (oriented) span of $l_i(v)$ and $z$, the two planes now equipartition the measure $\mu$ and have the desired intersection.
+
+	Let now $\bbZ_4 = \gen{g_1}$ act on $S^1$ by $\frac{\pi}{2}$ rotation counter clockwise. Then, by construction we have that:
+	\[
+		H_0(g_1\cdot v) = H_1(v)
+	\]
+	\[
+		H_1(g_1\cdot v) = -H_0(v)
+	\]
+
+	In other words, if we consider the planar problem with the bisecting vector rotated by $\frac{\pi}{2}$, the new first line is the previous second while the new second is
+is the old first with opposite orientation.
+
+We can now define a map $S^1\times S^3 \rightarrow (S^3)^3$, $(v, w) \mapsto (H_0(v), H_1(v), w)$.
+
+To check now that a configuration of $3$ planes equipartition the measure, it is equivalent to check that the alternating sum functions $F_\alpha$ are $0$ for all signed
+patterns $\alpha\in \ztwo^3 \setminus 0$. However, by construction the first two planes split equally the mass, thus it is sufficient to check the $4$
+patterns involving the last one; i.e. $\alpha = (0,0,1), (1,0,1), (0,1,1)$ and $(1,1,1)$.
+
+What is more, it is straightforward to verify how the alternating sum functions behave under the $G$-action.
+Explicitly, $\forall (v,w)\in S^1\times S^3$ the following equalities hold:
+
+\begin{align*}
+	F_{(0,0,1)}(g_1\cdot (v,w)) &=  F_{(0,0,1)}(v,w)\\
+	F_{(0,1,1)}(g_1\cdot (v,w)) &=   - F_{(1,0,1)}(v,w)\\
+	F_{(1,0,1)}(g_1\cdot (v,w)) &=  F_{(0,1,1)}(v,w)\\
+	F_{(1,1,1)}(g_1\cdot (v,w)) &=  - F_{(1,1,1)}(v,w)\\
+\end{align*}
+
+\begin{align*}
+	F_{(0,0,1)}(g_2\cdot (v,w)) &=  - F_{(0,0,1)}(v,w)\\
+	F_{(0,1,1)}(g_2\cdot (v,w)) &=  - F_{(1,0,1)}(v,w)\\
+	F_{(1,0,1)}(g_2\cdot (v,w)) &=  - F_{(0,1,1)}(v,w)\\
+	F_{(1,1,1)}(g_2\cdot (v,w)) &=  - F_{(1,1,1)}(v,w)\\
+\end{align*}
+
+Additionally, we can choose a linear $G$-action on $\bbR^4$ that is consistent with the previous equations. In particular, if we define:
+
+\begin{align*}
+	g_1\cdot (x, y, z, u) &= (x, -z, y, -u)\\
+	g_2 \cdot (x, y, z, u) &= (-x, -y, -z, -u)
+\end{align*}
+
+Then it is easy to check that the alternating sum map $\Psi: S^1\times S^3 \rightarrow \bbR^4$
+
+\[
+	(v, w) \mapsto \left(F_{(0,0,1)}(v,w), F_{(0,1,1)}(v,w), F_{(1,0,1)}(v,w), F_{(1,1,1)}(v,w)\right)
+	\]
+
+	is actually a $G$-equivariant map whose zeros are exactly the configurations of planes that equipartition the measure and have the desired intersection property.
+\vskip .5em
+	\textbf{Step 2}
+	\vskip .5em
+
+	Suppose now by contradiction that $\Psi$ does not have a zero. This means that $\overline{\Psi}: S^1\times S^3 \rightarrow S^3$ is a well defined
+	$G$-equivariant map.
+
+	Denote by $\Psi_a$, $a\in S^1$, the map $\Psi_a: S^3 \rightarrow S^3$, $\Psi_a(p) = \overline{\Psi}(a, p)$; this function have two key properties:
+	\begin{enumerate}
+		\item $\forall a \in S^1$, $\Psi_a$ is antipodal
+		\item $\forall a, b \in S^1$, $\Psi_a$ and $\Psi_b$ are homotopic
+	\end{enumerate}
+
+	However, the map induced by $g_1$ on the sphere has degree $-1$ and thus we have:
+	\[
+		[\Psi_a] = [\Psi_{g_1\cdot a}] = [g_1\cdot \Psi_a] = - [\Psi_a]
+	\]
+
+	Thus $\Psi_a$ is null-homotopic, but Borsuk-Ulam implies that an antipodal map of $S^3$ can't be. $\lightning$
+
+\end{proof}
+
+\section*{Topology facts needed in the proof}
+
+\begin{theorem}
+	If $A\in O(n)$ is an orthogonal matrix, then the induced continuous map $A:S^{n-1} \rightarrow S^{n-1}$ has degree $\deg(A) = \det(A)$.
+\end{theorem}
+\begin{proof}
+	WLOG $\det(A) = 1$ (i.e. $A\in SO(n)$). Since $SO(n)$ is arc connected, there is a path $\gamma:A\rightsquigarrow I$ to the identity matrix.
+
+	As a result, the map $A:S^{n-1} \rightarrow S^{n-1}$ is homotopic to the identity through the homotopy $H:S^{n-1} \times \left[0,1\right]\rightarrow S^{n-1}$;
+	$H(x, t) = \gamma(t)x$.
+
+\end{proof}
+
+\begin{theorem}
+	Let $f:S^{n-1} \rightarrow S^{n-1}$ be an antipodal map. Then $\deg(f) \neq 0$.
+\end{theorem}
+\begin{proof}
+	Suppose by contradiction $\exists f:S^{n-1} \rightarrow S^{n-1}$ antipodal and $\deg(f)=0$.
+
+	Then $f$ can be extended to a map $F:D^n \rightarrow S^{n-1}$; using this map it is possible to construct $\tilde F: S^n\rightarrow S^{n-1}$:
+	\[
+		\tilde F(x_1, \dots, x_{n+1})=
+		\begin{cases}
+			F(x_1, \dots, x_n) & \mbox{if }x_{n+1} \geq 0\\
+			-F(-x_1, \dots, -x_n) & \mbox{if }x_{n+1} \leq 0
+		\end{cases}
+	\]
+
+	It is well defined because on the horizontal equator both sides coincide with $f$ since it is antipodal; what is more, $\tilde F$ is antipodal:
+	\[
+		\tilde F(-(x, x_{n+1})) = -F(-(-x)) = -F(x) = - \tilde F((x, x_{n+1}))
+	\]
+	\[
+		\tilde F(-(x, x_{n+1})) = F(-x) = - (-F(-x)) = - \tilde F((x, x_{n+1}))
+	\]
+
+	Thus $\tilde F$ violates Borsuk-Ulam. $\lightning$.
+
+\end{proof}
+\end{document}
