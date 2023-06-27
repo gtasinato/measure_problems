@@ -11,6 +11,7 @@
 \maketitle
 \section*{Notation}
 \begin{itemize}
+ \item Given two vectors $x, y$ of dimension $d$,  their scalar product is $\scalar{x}{y}:=\sum_{i=1}^d x_iy_i$.
 \item A measure $\mu$ on $\bbR^d$ is nice if it is Borel, $\mu(\bbR^d)=1$, $\mu(H) = 0$ for all affine hyperplanes and it has connected support.
 \item Given an arrangement $\ccH$ of $k$ oriented affine hyperplanes and a sign pattern $\alpha\in (\ztwo)^k$, the orthant $\ccO(\ccH, \alpha)$ is defined as
   \[
@@ -19,7 +20,7 @@
   Intuitively, $\ccO(\ccH, \alpha)$ is the set of point lying on the side of $H_i$ determined by $\alpha_i$ (positive if $\alpha_i=0$, negative otherwise).
 \item $G= \bbZ_4\times \ztwo$ with generators $g_1 = (1,0)$ and $g_2=(0, 1)$.
 \item If $v\in \bbR^d$ is a non-zero vector, $\overline{v}$ is its normalization $\overline{v}=\frac{v}{\norm{v}}$.
-\item An oriented affine hyperplane $H = \{x\in \bbR^d \vert \scalar{h}{x} - a =0 \}$ defines a point $\frac{(h, a)}{\norm{(h,a)}}$ in $S^d$; likewise, a point on $x = (\bar x, a)\in S^d$ defines an oriented affine hyperplane $H(x) = \{p\in \bbR^d \vert \scalar{\bar x}{p} -a = 0 \}$.
+\item An oriented affine hyperplane $H = \{p\in \bbR^d \vert \scalar{h}{p} - a =0 \}$ defines a point $\frac{(h, a)}{\norm{(h,a)}}$ in $S^d$; likewise, a point on $x = (\tilde x, a)\in S^d$ defines an oriented affine hyperplane $H(x) = \{p\in \bbR^d \vert \scalar{\tilde x}{p} -a = 0 \}$.
 \item Given a nice measure $\mu$ in $\bbR^3$, define the standard test map $F:\left(S^3 \right)^3 \times \ztwo^3  \rightarrow \bbR$:
   \[
     F(x, \omega) = \mu(\ccO(x, \omega))  - \frac{1}{8}
@@ -226,3 +227,5 @@ Our goal is to prove the following result:
 
 \end{proof}
 \end{document}
+
+% LocalWords:  homotopic

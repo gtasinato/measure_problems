@@ -11,10 +11,16 @@
 \title{Splitting lines in $\bbR^3$}
 \date{}
 \author{}
+
+
 \begin{document}
 \maketitle
+
 \section*{Notation}
 \begin{itemize}
+
+\item Given two vectors $x, y$, their scalar product is $\scalar{x}{y}$
+
 \item $B_r(p)$ is the (closed) ball centered in $p$ of radius $r$.
 \item $X := S^3\times S^3 \times S^3$ as a subset of polynomials $\bbR[t_1, t_2, t_3]$ (product of three affine polynomials).
 \item $X$ is a metric space with the distance:
@@ -266,7 +272,6 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
 
   \vskip 1em
   \textbf{CLAIM: } $q_\infty$ realizes $m(y_\infty)$.
-
   Assuming the claim, we get that for $n$ big enough:
 
   \begin{align*}
@@ -280,7 +285,23 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
   The only thing left to prove is the claim.
 
   \vskip .5em
+  \textbf{Proof: } we want to show that $\forall q\in B_\delta(p)$:
 
+  \[
+    \vert y_\infty(q) - x(q)\vert \leq \vert y_\infty(q_\infty) - x(q_\infty)\vert
+  \]
+  Fix $q\in B_\delta(p)$; by definition of $q_n$ we have:
+  \begin{align*}
+    \vert y_n(q)  - x(q)\vert &\leq \vert y_n(q_n) - x(q_n)\vert\\
+                              &\leq \vert y_n(q_n) - y_\infty(q_\infty) \vert + \vert y_\infty(q_\infty) - x(q_\infty)\vert + \vert x(q_\infty) - x(q_n)\vert\\
+  \end{align*}
+
+  Passing to the limit in $n$ we have the desired inequality since:
+  \begin{itemize}
+  \item $\lim_{n\to \infty}y_n(q_n) = y_\infty(q_\infty)$ by uniform convergence of $y_n$ to $y_\infty$
+  \item $\lim_{n\to \infty}x(q_n) = x(q_\infty)$ by continuity of $x$
+    \item $\lim_{n\to \infty}y_n(q) = y_\infty(q)$ by convergence of $y_n$
+  \end{itemize}
 
 \end{proof}
 \begin{lemma}[Target Measure]
@@ -307,6 +328,10 @@ hence the sequence $x_n(p)$ converges to $x_\infty(p)$ as desired.
 \begin{proof}
   By equivariant simplicial approximation we can find small enough triangulations for the spaces and an affine map $g$ that is $G_\pm$-homotopic to $TH$ and $\max_{(x,t)\in X\times I} \norm{f(x, t) - TH_t(x)} < \frac{\epsilon}{2}$.
   By lemma \ref{smooth}, the property of having exactly one orbit of zeros is preserved under perturbations small enough (since $0$ is a regular value of the function on $E$) hence the only condition we need to show is that we can find a perturbation that is generic.
+
+
+  \vskip 1em
+  The argument is basically an adaptation to our context of the argument found in section 2.2 of \cite{matousek_using_2008}
 \end{proof}
 
 \begin{lemma}\label{smooth}
@@ -433,7 +458,6 @@ A direct computation shows that the Jacobian matrix is:
 Hence $0$ is a regular value for $Tg$ as desired.
 \end{proof}
 \printbibliography
-
 \end{document}
 % LocalWords:  equicontinuity equivariant simplicial homotopy orthant
 % LocalWords:  homotopic equipartitions simplices triangulations Guth
